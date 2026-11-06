@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.idea
+profiles_and_games.json
+*.log
+.env
