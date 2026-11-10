@@ -1,4 +1,4 @@
-import storage
+from services import storage, logger
 
 
 def create_profile():
@@ -28,6 +28,7 @@ def show_profiles():
 
     if not saved_profiles:
         print("Er zijn nog geen profielen aangemaakt.")
+        return
 
     print("\n***** BESCHIKBARE PROFIELEN *****")
 
@@ -84,8 +85,9 @@ def select_profile():
     try:
         profile_choice = int(input("Welk profiel wil je kiezen? ").strip())
 
-    except ValueError:
+    except ValueError as error:
         print("Voer een geldig profielnummer in.")
+        logger.log_error(f"select_profile: {error}")
         return None
 
     if profile_choice == 0:
@@ -118,8 +120,9 @@ def delete_profile():
     try:
         profile_choice = int(input("Welk profiel wil je verwijderen? ").strip())
 
-    except ValueError:
+    except ValueError as error:
         print("Voer een geldig profielnummer in.")
+        logger.log_error(f"delete_profile: {error}")
         return None
 
     if profile_choice == 0:

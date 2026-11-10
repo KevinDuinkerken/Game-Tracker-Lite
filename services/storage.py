@@ -1,10 +1,13 @@
 import json
+from pathlib import Path
 
+
+DATA_FILE = Path(__file__).resolve().parent.parent / "profiles_and_games.json"
 
 
 def load_profiles():
     try:
-        with open("profiles_and_games.json", "r") as file:
+        with open(DATA_FILE, "r") as file:
             saved_profiles = json.load(file)
         return saved_profiles
 
@@ -13,7 +16,7 @@ def load_profiles():
 
 
 def save_profiles(saved_profiles):
-    with open("profiles_and_games.json", "w") as file:
+    with open(DATA_FILE, "w") as file:
         json.dump(saved_profiles, file)
 
 
