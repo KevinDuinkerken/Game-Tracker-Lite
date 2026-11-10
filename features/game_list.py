@@ -2,6 +2,8 @@ from services import storage, logger
 
 
 def show_game_list_menu():
+    """Toont het gamelijst-menu en vraagt de gebruiker om een keuze."""
+
     print("\n***** MIJN GAMELIJST BEHEREN *****")
     print("1: Opgeslagen games bekijken")
     print("2: Speelstatus wijzigen")
@@ -12,6 +14,8 @@ def show_game_list_menu():
 
 
 def handle_game_list_menu(selected_profile):
+    """Verwerkt de keuze voor het beheren van de persoonlijke gamelijst."""
+
     while True:
         choice = show_game_list_menu()
 
@@ -32,6 +36,8 @@ def handle_game_list_menu(selected_profile):
 
 
 def check_saved_games(selected_profile):
+    """Toont de opgeslagen games en de speelstatus van het actieve profiel."""
+
     print("\n***** OPGESLAGEN GAMES *****")
 
     saved_games = storage.load_profile_games(selected_profile)
@@ -45,6 +51,8 @@ def check_saved_games(selected_profile):
 
 
 def show_status_menu():
+    """Toont het menu voor de beschikbare speelstatussen."""
+
     print("\n***** KIES NIEUWE SPEELSTATUS *****")
     print("1: Wil ik spelen")
     print("2: Aan het spelen")
@@ -53,6 +61,8 @@ def show_status_menu():
 
 
 def change_game_status(selected_profile):
+    """Wijzigt de speelstatus van een gekozen game en slaat deze op."""
+
     print("\n***** SPEELSTATUS WIJZIGEN *****")
 
     saved_games = storage.load_profile_games(selected_profile)
@@ -109,6 +119,8 @@ def change_game_status(selected_profile):
 
 
 def remove_game(selected_profile):
+    """Haalt een gekozen game na bevestiging uit de persoonlijke gamelijst."""
+
     print("\n***** GAME VERWIJDEREN *****")
 
     saved_games = storage.load_profile_games(selected_profile)
@@ -154,6 +166,8 @@ def remove_game(selected_profile):
 
 
 def add_game(selected_game, selected_profile):
+    """Voegt een game toe aan de persoonlijke gamelijst als deze nog niet bestaat."""
+
     saved_games = storage.load_profile_games(selected_profile)
 
     for game in saved_games:

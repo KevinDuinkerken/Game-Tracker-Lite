@@ -6,6 +6,8 @@ BASE_URL = "https://www.freetogame.com/api/"
 
 
 def get_games_by_category(category_choice):
+    """Haalt games op uit de FreeToGame API op basis van de gekozen categorie."""
+
     try:
         response = requests.get(f"{BASE_URL}games?category={category_choice.lower()}", timeout=10)
         response.raise_for_status()
@@ -18,6 +20,8 @@ def get_games_by_category(category_choice):
 
 
 def get_game_details(game_id):
+    """Haalt details op over een game via de FreeToGame API."""
+
     try:
         response = requests.get(f"{BASE_URL}game?id={game_id}", timeout=10)
         response.raise_for_status()

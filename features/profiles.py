@@ -2,6 +2,8 @@ from services import storage, logger
 
 
 def create_profile():
+    """Maakt een nieuw profiel aan."""
+
     profile_name = input("Voer een nieuwe profielnaam in: ").strip().capitalize()
 
     if not profile_name:
@@ -24,6 +26,8 @@ def create_profile():
 
 
 def show_profiles(saved_profiles):
+    """Toont een genummerd overzicht van de bestaande profielen."""
+
     if not saved_profiles:
         print("Er zijn nog geen profielen aangemaakt.")
         return
@@ -35,6 +39,8 @@ def show_profiles(saved_profiles):
 
 
 def show_profile_menu():
+    """Toont het profielmenu en vraagt de gebruiker om een keuze"""
+
     print("\n***** PROFIELMENU *****")
     print("1: Profiel aanmaken")
     print("2: Profiel kiezen / wisselen")
@@ -45,6 +51,8 @@ def show_profile_menu():
 
 
 def handle_profile_menu():
+    """Verwerkt de menukeuzes voor het aanmaken, selecteren en verwijderen van profielen."""
+
     while True:
         choice = show_profile_menu()
 
@@ -71,6 +79,8 @@ def handle_profile_menu():
 
 
 def select_profile():
+    """Laat de gebruiker een bestaand profiel selecteren."""
+
     saved_profiles = storage.load_profiles()
 
     show_profiles(saved_profiles)
@@ -105,6 +115,8 @@ def select_profile():
 
 
 def delete_profile():
+    """Laat de gebruiker een profiel kiezen om te verwijderen."""
+
     saved_profiles = storage.load_profiles()
 
     if not saved_profiles:
@@ -154,7 +166,8 @@ def delete_profile():
 
 
 def start_with_profile():
-    """docstring"""
+    """Zorgt dat de gebruiker bij het opstarten een profiel aanmaakt of selecteert."""
+
     while True:
         saved_profiles = storage.load_profiles()
 

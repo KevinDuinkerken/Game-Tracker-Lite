@@ -13,6 +13,8 @@ CATEGORIES = {
 
 
 def show_search_menu():
+    """Toont de beschikbare gamecategorieën en vraagt om een keuze."""
+
     print("\n***** GAMES ZOEKEN OP CATEGORIE *****")
 
     for number, category in CATEGORIES.items():
@@ -24,6 +26,8 @@ def show_search_menu():
 
 
 def handle_search_menu(selected_profile):
+    """Verwerkt de gekozen categorie en haalt de bijbehorende games op."""
+
     while True:
         choice = show_search_menu()
 
@@ -44,6 +48,8 @@ def handle_search_menu(selected_profile):
 
 
 def show_games(games):
+    """Toont een genummerd overzicht van de gevonden games."""
+
     print("\n***** GEVONDEN GAMES *****")
 
     for number, game in enumerate(games, start=1):
@@ -53,6 +59,8 @@ def show_games(games):
 
 
 def select_game(games, selected_profile):
+    """Laat de gebruiker een game kiezen en haalt de details ervan op."""
+
     while True:
         try:
             game_choice = int(input("Welke game wil je bekijken? ").strip())
@@ -80,6 +88,8 @@ def select_game(games, selected_profile):
 
 
 def show_game_details(game_details):
+    """Toont details over de geselecteerde game."""
+
     print("\n***** GAME DETAILS *****")
     print(f"Titel: {game_details['title']}")
     print(f"Genre: {game_details['genre']}")
@@ -88,6 +98,8 @@ def show_game_details(game_details):
 
 
 def show_game_details_menu():
+    """Toont de opties voor een geselecteerde game en vraagt om een keuze."""
+
     print("\n***** GAME OPTIES *****")
     print("1: Toevoegen aan mijn gamelijst")
     print("0: Terug naar categorieën\n")
@@ -96,6 +108,8 @@ def show_game_details_menu():
 
 
 def handle_game_details_menu(selected_game, selected_profile):
+    """Verwerkt de keuze om een game toe te voegen of terug te gaan."""
+
     while True:
         choice = show_game_details_menu()
 

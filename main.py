@@ -2,6 +2,8 @@ from features import profiles, game_list, game_search
 
 
 def show_main_menu(selected_profile):
+    """Toont het hoofdmenu met het actieve profiel en vraagt om een keuze."""
+
     print("\n***** HOOFDMENU *****")
     print(f"Actief profiel: {selected_profile}\n")
 
@@ -14,6 +16,8 @@ def show_main_menu(selected_profile):
 
 
 def main():
+    """Start de applicatie en verwerkt de keuzes uit het hoofdmenu."""
+
     selected_profile = profiles.start_with_profile()
 
     while True:
