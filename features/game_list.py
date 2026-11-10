@@ -2,7 +2,7 @@ from services import storage, logger
 
 
 def show_game_list_menu():
-    """Toont het gamelijst-menu en vraagt de gebruiker om een keuze."""
+    """Toont het gamelijst menu en vraagt de gebruiker om een keuze."""
 
     print("\n***** MIJN GAMELIJST BEHEREN *****")
     print("1: Opgeslagen games bekijken")

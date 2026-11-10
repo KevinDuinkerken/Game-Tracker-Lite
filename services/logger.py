@@ -13,5 +13,6 @@ logging.basicConfig(
 
 
 def log_error(message):
-    """"Schrijft een foutmelding naar het logbestand app.log"""
+    """Schrijft een foutmelding naar het logbestand app.log."""
+
     logging.error(message)

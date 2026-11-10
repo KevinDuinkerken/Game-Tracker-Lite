@@ -39,7 +39,7 @@ def show_profiles(saved_profiles):
 
 
 def show_profile_menu():
-    """Toont het profielmenu en vraagt de gebruiker om een keuze"""
+    """Toont het profielmenu en vraagt de gebruiker om een keuze."""
 
     print("\n***** PROFIELMENU *****")
     print("1: Profiel aanmaken")
