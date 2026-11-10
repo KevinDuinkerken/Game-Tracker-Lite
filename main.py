@@ -3,12 +3,7 @@ from features import profiles, game_list, game_search
 
 def show_main_menu(selected_profile):
     print("\n***** HOOFDMENU *****")
-
-    if selected_profile:
-        print(f"Actief profiel: {selected_profile}\n")
-
-    else:
-        print("Geen profiel geselecteerd. Maak een profiel aan of kies een bestaand profiel.\n")
+    print(f"Actief profiel: {selected_profile}\n")
 
     print("1: Games zoeken op categorie")
     print("2: Mijn gamelijst beheren")

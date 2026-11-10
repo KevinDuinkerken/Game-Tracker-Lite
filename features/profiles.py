@@ -23,9 +23,7 @@ def create_profile():
     return profile_name
 
 
-def show_profiles():
-    saved_profiles = storage.load_profiles()
-
+def show_profiles(saved_profiles):
     if not saved_profiles:
         print("Er zijn nog geen profielen aangemaakt.")
         return
@@ -73,9 +71,9 @@ def handle_profile_menu():
 
 
 def select_profile():
-    show_profiles()
-
     saved_profiles = storage.load_profiles()
+
+    show_profiles(saved_profiles)
 
     if not saved_profiles:
         return None
@@ -113,7 +111,7 @@ def delete_profile():
         print("Er zijn geen profielen om te verwijderen.")
         return None
 
-    show_profiles()
+    show_profiles(saved_profiles)
 
     print("0: Annuleren")
 
@@ -156,6 +154,7 @@ def delete_profile():
 
 
 def start_with_profile():
+    """docstring"""
     while True:
         saved_profiles = storage.load_profiles()
 
@@ -170,9 +169,30 @@ def start_with_profile():
 
         else:
             print("\n***** INLOGGEN *****")
-            selected_profile = select_profile()
 
-            if selected_profile:
+
+            show_profiles(saved_profiles)
+            print("0: Nieuw profiel aanmaken\n")
+
+            try:
+                profile_choice = int(input("Welk profiel wil je gebruiken? ").strip())
+
+            except ValueError as error:
+                print("Voer een geldig profielnummer in.")
+                logger.log_error(f"start_with_profile: {error}")
+                continue
+
+            if profile_choice == 0:
+                new_profile = create_profile()
+
+                if new_profile:
+                    return new_profile
+
+            elif 1 <= profile_choice <= len(saved_profiles):
+                profile_names = list(saved_profiles)
+                selected_profile = profile_names[profile_choice - 1]
+                print(f"Hallo {selected_profile}")
                 return selected_profile
 
-            print("Je moet eerst een profiel kiezen om verder te gaan.")
+            else:
+                print("Ongeldige keuze, probeer opnieuw.")
