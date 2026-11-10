@@ -45,7 +45,7 @@ def check_saved_games(selected_profile):
 
 
 def show_status_menu():
-    print("***** KIES NIEUWE SPEELSTATUS *****")
+    print("\n***** KIES NIEUWE SPEELSTATUS *****")
     print("1: Wil ik spelen")
     print("2: Aan het spelen")
     print("3: Uitgespeeld")
