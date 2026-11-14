@@ -43,7 +43,7 @@ def check_saved_games(selected_profile):
     saved_games = storage.load_profile_games(selected_profile)
 
     if not saved_games:
-        print("Je hebt nog geen games opgeslagen.")
+        print("\nJe hebt nog geen games opgeslagen.")
         return
 
     for number, game in enumerate(saved_games, start=1):
@@ -68,7 +68,7 @@ def change_game_status(selected_profile):
     saved_games = storage.load_profile_games(selected_profile)
 
     if not saved_games:
-        print("Je hebt nog geen games opgeslagen.")
+        print("\nJe hebt nog geen games opgeslagen.")
         return
 
     for number, game in enumerate(saved_games, start=1):
@@ -80,7 +80,7 @@ def change_game_status(selected_profile):
         game_choice = int(input("Welke game wil je wijzigen? ").strip())
 
     except ValueError as error:
-        print("Voer een geldig gamenummer in.")
+        print("\nVoer een geldig gamenummer in.")
         logger.log_error(f"change_game_status: {error}")
         return
 
@@ -89,7 +89,7 @@ def change_game_status(selected_profile):
 
     elif 1 <= game_choice <= len(saved_games):
         selected_game = saved_games[game_choice - 1]
-        print(f"Geselecteerde game: {selected_game['title']}\nHuidige speelstatus: {selected_game['status']}\n")
+        print(f"Geselecteerde game: {selected_game['title']}\nHuidige speelstatus: {selected_game['status']}")
         show_status_menu()
 
         status_choice = input("Maak een keuze: ").strip()
@@ -107,7 +107,7 @@ def change_game_status(selected_profile):
             selected_game["status"] = "Uitgespeeld"
 
         else:
-            print("Ongeldige keuze, probeer opnieuw.")
+            print("\nOngeldige keuze, probeer opnieuw.")
             return
 
         storage.save_profile_games(selected_profile, saved_games)
@@ -115,7 +115,7 @@ def change_game_status(selected_profile):
         print(f"\nSpeelstatus succesvol gewijzigd naar: {selected_game['status']}")
 
     else:
-        print("Ongeldige keuze, probeer opnieuw.")
+        print("\nOngeldige keuze, probeer opnieuw.")
 
 
 def remove_game(selected_profile):
@@ -126,7 +126,7 @@ def remove_game(selected_profile):
     saved_games = storage.load_profile_games(selected_profile)
 
     if not saved_games:
-        print("Je hebt nog geen games opgeslagen.")
+        print("\nJe hebt nog geen games opgeslagen.")
         return
 
     for number, game in enumerate(saved_games, start=1):
@@ -138,7 +138,7 @@ def remove_game(selected_profile):
         game_choice = int(input("Welke game wil je verwijderen? ").strip())
 
     except ValueError as error:
-        print("Voer een geldig gamenummer in.")
+        print("\nVoer een geldig gamenummer in.")
         logger.log_error(f"remove_game: {error}")
         return
 
@@ -152,17 +152,17 @@ def remove_game(selected_profile):
         if confirmation == "ja":
             saved_games.pop(game_choice - 1)
             storage.save_profile_games(selected_profile, saved_games)
-            print(f"{selected_game['title']} is succesvol verwijderd uit je gamelijst.")
+            print(f"\n{selected_game['title']} is succesvol verwijderd uit je gamelijst.")
 
         elif confirmation == "nee":
-            print("Verwijderen geannuleerd.")
+            print("\nVerwijderen geannuleerd.")
             return
 
         else:
-            print("Ongeldige invoer, antwoord met ja of nee.")
+            print("\nOngeldige invoer, antwoord met ja of nee.")
 
     else:
-        print("Ongeldige keuze, probeer opnieuw.")
+        print("\nOngeldige keuze, probeer opnieuw.")
 
 
 def add_game(selected_game, selected_profile):
@@ -172,7 +172,7 @@ def add_game(selected_game, selected_profile):
 
     for game in saved_games:
         if game["id"] == selected_game["id"]:
-            print(f"{selected_game['title']} staat al in je gamelijst.")
+            print(f"\n{selected_game['title']} staat al in je gamelijst.")
             return
 
     saved_game = {
@@ -183,4 +183,4 @@ def add_game(selected_game, selected_profile):
 
     saved_games.append(saved_game)
     storage.save_profile_games(selected_profile, saved_games)
-    print(f"{selected_game['title']} is succesvol toegevoegd aan je gamelijst.")
+    print(f"\n{selected_game['title']} is succesvol toegevoegd aan je gamelijst.")

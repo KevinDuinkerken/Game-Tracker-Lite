@@ -46,7 +46,7 @@ def main():
                     selected_profile = profiles.start_with_profile()
 
         else:
-            print("Ongeldige keuze, probeer opnieuw.")
+            print("\nOngeldige keuze, probeer opnieuw.")
 
 
 if __name__ == "__main__":

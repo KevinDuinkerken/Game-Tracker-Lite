@@ -66,7 +66,7 @@ def select_game(games, selected_profile):
             game_choice = int(input("Welke game wil je bekijken? ").strip())
 
         except ValueError as error:
-            print("Ongeldige invoer, voer een getal in.")
+            print("\nOngeldige invoer, voer een getal in.\n")
             logger.log_error(f"select_game: {error}")
             continue
 
@@ -84,7 +84,7 @@ def select_game(games, selected_profile):
             return
 
         else:
-            print("\nOngeldige keuze, probeer opnieuw.")
+            print("\nOngeldige keuze, probeer opnieuw.\n")
 
 
 def show_game_details(game_details):
@@ -121,4 +121,4 @@ def handle_game_details_menu(selected_game, selected_profile):
             return
 
         else:
-            print("Ongeldige keuze, probeer opnieuw.")
+            print("\nOngeldige keuze, probeer opnieuw.")

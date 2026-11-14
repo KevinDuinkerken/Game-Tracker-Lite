@@ -14,7 +14,7 @@ def get_games_by_category(category_choice):
         games = response.json()
         return games
     except requests.exceptions.RequestException as error:
-        print("Er is iets misgegaan met het ophalen van games.")
+        print("\nEr is iets misgegaan met het ophalen van games.")
         logger.log_error(str(error))
         return None
 
@@ -28,6 +28,6 @@ def get_game_details(game_id):
         game_details = response.json()
         return game_details
     except requests.exceptions.RequestException as error:
-        print("Er is iets misgegaan met het ophalen van games.")
+        print("\nEr is iets misgegaan met het ophalen van games.")
         logger.log_error(str(error))
         return None

@@ -7,20 +7,20 @@ def create_profile():
     profile_name = input("Voer een nieuwe profielnaam in: ").strip().capitalize()
 
     if not profile_name:
-        print("Je hebt niks ingevuld.")
+        print("\nJe hebt niks ingevuld.")
         return None
 
     saved_profiles = storage.load_profiles()
 
     if profile_name in saved_profiles:
-        print("Dit profiel bestaat al.")
+        print("\nDit profiel bestaat al.")
         return None
 
     saved_profiles[profile_name] = []
 
     storage.save_profiles(saved_profiles)
 
-    print(f"Profiel {profile_name} is succesvol aangemaakt.")
+    print(f"\nProfiel {profile_name} is succesvol aangemaakt.")
 
     return profile_name
 
@@ -75,7 +75,7 @@ def handle_profile_menu():
                 return "deleted", deleted_profile
 
         else:
-            print("Ongeldige keuze, probeer opnieuw.")
+            print("\nOngeldige keuze, probeer opnieuw.")
 
 
 def select_profile():
@@ -94,7 +94,7 @@ def select_profile():
         profile_choice = int(input("Welk profiel wil je kiezen? ").strip())
 
     except ValueError as error:
-        print("Voer een geldig profielnummer in.")
+        print("\nVoer een geldig profielnummer in.")
         logger.log_error(f"select_profile: {error}")
         return None
 
@@ -105,12 +105,12 @@ def select_profile():
         profile_names = list(saved_profiles)
         selected_profile = profile_names[profile_choice - 1]
 
-        print(f"Hallo {selected_profile}")
+        print(f"\nWelkom {selected_profile}!")
 
         return selected_profile
 
     else:
-        print("Ongeldige keuze, probeer opnieuw.")
+        print("\nOngeldige keuze, probeer opnieuw.")
         return None
 
 
@@ -120,7 +120,7 @@ def delete_profile():
     saved_profiles = storage.load_profiles()
 
     if not saved_profiles:
-        print("Er zijn geen profielen om te verwijderen.")
+        print("\nEr zijn geen profielen om te verwijderen.")
         return None
 
     show_profiles(saved_profiles)
@@ -131,7 +131,7 @@ def delete_profile():
         profile_choice = int(input("Welk profiel wil je verwijderen? ").strip())
 
     except ValueError as error:
-        print("Voer een geldig profielnummer in.")
+        print("\nVoer een geldig profielnummer in.")
         logger.log_error(f"delete_profile: {error}")
         return None
 
@@ -148,20 +148,20 @@ def delete_profile():
             del saved_profiles[selected_profile]
             storage.save_profiles(saved_profiles)
 
-            print(f"Profiel {selected_profile} is succesvol verwijderd.")
+            print(f"\nProfiel {selected_profile} is succesvol verwijderd.")
 
             return selected_profile
 
         elif confirmation == "nee":
-            print("Profiel verwijderen geannuleerd.")
+            print("\nProfiel verwijderen geannuleerd.")
             return None
 
         else:
-            print("Ongeldige keuze, probeer opnieuw.")
+            print("\nOngeldige keuze, probeer opnieuw.")
             return None
 
     else:
-        print("Ongeldig profielnummer, probeer opnieuw.")
+        print("\nOngeldig profielnummer, probeer opnieuw.")
         return None
 
 
@@ -191,7 +191,7 @@ def start_with_profile():
                 profile_choice = int(input("Welk profiel wil je gebruiken? ").strip())
 
             except ValueError as error:
-                print("Voer een geldig profielnummer in.")
+                print("\nVoer een geldig profielnummer in.")
                 logger.log_error(f"start_with_profile: {error}")
                 continue
 
@@ -204,8 +204,8 @@ def start_with_profile():
             elif 1 <= profile_choice <= len(saved_profiles):
                 profile_names = list(saved_profiles)
                 selected_profile = profile_names[profile_choice - 1]
-                print(f"Hallo {selected_profile}")
+                print(f"\nWelkom {selected_profile}!")
                 return selected_profile
 
             else:
-                print("Ongeldige keuze, probeer opnieuw.")
+                print("\nOngeldige keuze, probeer opnieuw.")
